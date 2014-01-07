@@ -93,9 +93,11 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\Game.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
+    <ClCompile Include="..\..\..\..\src\ResourceHolder.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\Game.h" />
+    <ClInclude Include="..\..\..\..\src\ResourceHolder.h" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio\Export.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio\Listener.hpp" />
