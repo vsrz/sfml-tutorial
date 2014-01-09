@@ -91,13 +91,20 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\Aircraft.cpp" />
+    <ClCompile Include="..\..\..\..\src\Entity.cpp" />
     <ClCompile Include="..\..\..\..\src\Game.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
     <ClCompile Include="..\..\..\..\src\ResourceHolder.inl" />
+    <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\Aircraft.h" />
+    <ClInclude Include="..\..\..\..\src\Entity.h" />
     <ClInclude Include="..\..\..\..\src\Game.h" />
     <ClInclude Include="..\..\..\..\src\ResourceHolder.h" />
+    <ClInclude Include="..\..\..\..\src\ResourceIdentifiers.h" />
+    <ClInclude Include="..\..\..\..\src\SceneNode.h" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio\Export.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio\Listener.hpp" />
