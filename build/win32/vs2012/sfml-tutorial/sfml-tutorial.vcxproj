@@ -97,6 +97,7 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClCompile Include="..\..\..\..\src\main.cpp" />
     <ClCompile Include="..\..\..\..\src\ResourceHolder.inl" />
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
+    <ClCompile Include="..\..\..\..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\Aircraft.h" />
@@ -186,6 +187,7 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\Window.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="..\..\..\..\src\World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\src\SFML-2.1\include\SFML\Graphics\Rect.inl" />

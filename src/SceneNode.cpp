@@ -1,5 +1,6 @@
 #include "SceneNode.h"
 
+/* Public Methods */
 SceneNode::SceneNode(void)
 {
 	mParent = nullptr;
@@ -31,6 +32,38 @@ SceneNode::Ptr SceneNode::detachChild(const SceneNode& node)
 	return result;
 }
 
+void SceneNode::update(sf::Time dt)
+{
+	// Update all the elements in this node
+	updateCurrent(dt);
+	updateChildren(dt);
+
+}
+
+sf::Vector2f SceneNode::getWorldPosition() const
+{
+	return getWorldTransform() * sf::Vector2f();
+
+}
+
+sf::Transform SceneNode::getWorldTransform() const
+{
+	// The identity transform (basically, the nothing transform)
+	sf::Transform transform = sf::Transform::Identity;
+
+	// Cycle through each parent node until you reach the root node, combining
+	// its transform 
+	for (const SceneNode* node = this; node != nullptr; node = node->mParent)
+	{
+		transform = node->getTransform() * transform;
+	}
+
+	// Return the world position
+	return transform;
+
+}
+
+/* Private Methods */
 void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	// the absolute transform of the current node (where the scene node is placed)
@@ -49,8 +82,23 @@ void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	// Why do we need to draw nothing?
+}
+
+void SceneNode::updateCurrent(sf::Time dt)
+{
 
 }
+
+void SceneNode::updateChildren(sf::Time dt)
+{
+	// Loop through each child and call update() on it
+	for (Ptr& child : mChildren)
+	{
+		child->update(dt);
+	}
+}
+
 
 
 

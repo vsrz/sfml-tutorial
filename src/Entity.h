@@ -6,8 +6,10 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include "ResourceIdentifiers.h"
+#include "SceneNode.h"
 
 class Entity
+	: public SceneNode
 {
 public:
 	void setVelocity(sf::Vector2f velocity);
@@ -15,6 +17,7 @@ public:
 	sf::Vector2f getVelocity() const;
 
 private:
+	virtual void updateCurrent(sf::Time dt);
 	sf::Vector2f mVelocity;
 
 };

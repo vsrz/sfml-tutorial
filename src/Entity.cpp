@@ -1,7 +1,5 @@
 #include "Entity.h"
 
-
-
 void Entity::setVelocity(float vx, float vy)
 {
 	mVelocity.x = vx;
@@ -18,4 +16,14 @@ sf::Vector2f Entity::getVelocity() const
 {
 	return mVelocity;
 }
+
+/* Private Members */
+void Entity::updateCurrent(sf::Time dt)
+{
+	/* Offset the position depending on time step--longer time 
+	   step leads to entity being moved farther over longer time */
+	move(mVelocity * dt.asSeconds());
+
+}
+
 

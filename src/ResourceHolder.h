@@ -17,12 +17,15 @@ public:
 	const Resource& get(Identifier id) const;
 
 	template <typename Parameter>
-	void load(Identifier id, const std::string& filename, const Parameter p);
+	void load(Identifier id, const std::string& filename, const Parameter& p);
 
 
 private:
 	std::map<Identifier, std::unique_ptr<Resource>> mResourceMap;
 	
 };
+
+// Implementation of ResourceHolder class
+#include "ResourceHolder.inl"
 
 #endif

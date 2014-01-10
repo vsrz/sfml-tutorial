@@ -36,7 +36,7 @@ const Resource& ResourceHolder<Resource,Identifier>::get(Identifier id) const
 /* SFML Shader Loader */
 template <typename Resource, typename Identifier>
 template <typename Parameter>
-void ResourceHolder<Resource,Identifier>::load(Identifier id, const std::string& filename, const Parameter p)
+void ResourceHolder<Resource,Identifier>::load(Identifier id, const std::string& filename, const Parameter& p)
 {
 	std::unique_ptr<Resource> resource(new Resource());
 	if (!resource->loadFromFile(filename, p))

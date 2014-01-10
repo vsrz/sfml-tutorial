@@ -5,6 +5,8 @@
 #include "Entity.h"
 #include "ResourceIdentifiers.h"
 
+#include <SFML/Graphics.hpp>
+
 class Aircraft :
 	public Entity
 {
