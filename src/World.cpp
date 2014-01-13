@@ -8,8 +8,10 @@ World::World(sf::RenderWindow& window)
 		mWorldView.getSize().x / 2.f, 
 		mWorldBounds.height - mWorldView.getSize().y
 		)
-	, mScrollSpeed(-50.f)
+	, mScrollSpeed(-550.f)
 	, mPlayerAircraft(nullptr)
+	, mSceneLayers()
+	, mSceneGraph()
 	 	  
 {
 	loadTextures();

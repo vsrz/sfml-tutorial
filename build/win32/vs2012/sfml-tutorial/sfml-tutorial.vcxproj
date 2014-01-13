@@ -95,9 +95,9 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClCompile Include="..\..\..\..\src\Entity.cpp" />
     <ClCompile Include="..\..\..\..\src\Game.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
-    <None Include="..\..\..\..\src\ResourceHolder.inl">
-      <FileType>Document</FileType>
-    </None>
+    <ClInclude Include="..\..\..\..\src\ResourceHolder.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
     <ClCompile Include="..\..\..\..\src\SpriteNode.cpp" />
     <ClCompile Include="..\..\..\..\src\World.cpp" />
@@ -106,6 +106,9 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\Aircraft.h" />
     <ClInclude Include="..\..\..\..\src\Entity.h" />
     <ClInclude Include="..\..\..\..\src\Game.h" />
+    <ClInclude Include="..\..\..\..\src\Glob.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\ResourceHolder.h" />
     <ClInclude Include="..\..\..\..\src\ResourceIdentifiers.h" />
     <ClInclude Include="..\..\..\..\src\SceneNode.h" />
