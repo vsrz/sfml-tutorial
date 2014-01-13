@@ -95,8 +95,11 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClCompile Include="..\..\..\..\src\Entity.cpp" />
     <ClCompile Include="..\..\..\..\src\Game.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
-    <ClCompile Include="..\..\..\..\src\ResourceHolder.inl" />
+    <None Include="..\..\..\..\src\ResourceHolder.inl">
+      <FileType>Document</FileType>
+    </None>
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
+    <ClCompile Include="..\..\..\..\src\SpriteNode.cpp" />
     <ClCompile Include="..\..\..\..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +190,7 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\Window.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="..\..\..\..\src\SpriteNode.h" />
     <ClInclude Include="..\..\..\..\src\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +200,11 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <None Include="..\..\..\..\src\SFML-2.1\include\SFML\System\Utf.inl" />
     <None Include="..\..\..\..\src\SFML-2.1\include\SFML\System\Vector2.inl" />
     <None Include="..\..\..\..\src\SFML-2.1\include\SFML\System\Vector3.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\res\Desert.png" />
+    <Image Include="..\..\..\..\res\Eagle.png" />
+    <Image Include="..\..\..\..\res\Raptor.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

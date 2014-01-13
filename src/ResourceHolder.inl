@@ -1,4 +1,3 @@
-#include "ResourceHolder.h"
 
 /* Generic SFML Loaders */
 template <typename Resource, typename Identifier>

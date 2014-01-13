@@ -5,7 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-
+#include "World.h"
 
 class Game
 {
@@ -25,13 +25,7 @@ private:
 	static const sf::Time TimePerFrame;
 
 	sf::RenderWindow mWindow;	
-	sf::Texture mTexture;
-	sf::Sprite mPlayer;
-
-	bool mIsMovingUp;
-	bool mIsMovingLeft;
-	bool mIsMovingDown;
-	bool mIsMovingRight;
+	World mWorld;
 };
 
 #endif

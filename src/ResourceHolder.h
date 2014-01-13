@@ -25,7 +25,7 @@ private:
 	
 };
 
-// Implementation of ResourceHolder class
+// (In-Line) Implementation of ResourceHolder class
 #include "ResourceHolder.inl"
 
 #endif
