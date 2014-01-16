@@ -1,14 +1,15 @@
 #include "World.h"
+#include <iostream>
 
 World::World(sf::RenderWindow& window)
 	: mWindow(window)
 	, mWorldView(window.getDefaultView())
-	, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 2000.f)
+	, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 5000.f)
 	, mSpawnPosition(
 		mWorldView.getSize().x / 2.f, 
 		mWorldBounds.height - mWorldView.getSize().y
 		)
-	, mScrollSpeed(-550.f)
+	, mScrollSpeed(-50.f)
 	, mPlayerAircraft(nullptr)
 	, mSceneLayers()
 	, mSceneGraph()
@@ -28,11 +29,13 @@ void World::draw()
 }
 void World::update(sf::Time dt)
 {
+	// Move the background texture
 	mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());
-
+	
 	sf::Vector2f position = mPlayerAircraft->getPosition();
 	sf::Vector2f velocity = mPlayerAircraft->getVelocity();
 
+	// Bounce the planes in the other direction of they have reached the edge of the screen
 	if(position.x <= mWorldBounds.left + 150 
 		|| position.x >= mWorldBounds.left + mWorldBounds.width - 150)
 	{

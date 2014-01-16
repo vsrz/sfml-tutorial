@@ -8,6 +8,8 @@
 #include <memory>
 #include <algorithm>
 #include <cassert>
+#include "Command.h"
+#include "Category.h"
 
 class SceneNode : 
 	public sf::Transformable, 
@@ -25,6 +27,9 @@ public:
 
 	sf::Vector2f getWorldPosition() const;
 	sf::Transform getWorldTransform() const;
+
+	virtual unsigned int getCategory() const;
+	void onCommand(const Command& command, sf::Time dt);
 
 
 private:

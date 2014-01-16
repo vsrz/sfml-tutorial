@@ -92,14 +92,18 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\Aircraft.cpp" />
+    <ClCompile Include="..\..\..\..\src\Command.cpp" />
     <ClCompile Include="..\..\..\..\src\Entity.cpp" />
     <ClCompile Include="..\..\..\..\src\Game.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
+    <ClInclude Include="..\..\..\..\src\Category.h" />
+    <ClInclude Include="..\..\..\..\src\Command.h" />
     <ClInclude Include="..\..\..\..\src\ResourceHolder.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
     <ClCompile Include="..\..\..\..\src\SpriteNode.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests.cpp" />
     <ClCompile Include="..\..\..\..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +198,7 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="..\..\..\..\src\SpriteNode.h" />
+    <ClInclude Include="..\..\..\..\src\Tests.h" />
     <ClInclude Include="..\..\..\..\src\World.h" />
   </ItemGroup>
   <ItemGroup>

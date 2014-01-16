@@ -48,7 +48,7 @@ sf::Vector2f SceneNode::getWorldPosition() const
 
 sf::Transform SceneNode::getWorldTransform() const
 {
-	// The identity transform (basically, the nothing transform)
+	// The identity transform (basically, the null transform)
 	sf::Transform transform = sf::Transform::Identity;
 
 	// Cycle through each parent node until you reach the root node, combining
@@ -61,6 +61,27 @@ sf::Transform SceneNode::getWorldTransform() const
 	// Return the world position
 	return transform;
 
+}
+
+// Returns the category of the game object in this scene node
+// Override this for each game entity
+unsigned int SceneNode::getCategory() const
+{
+	return Category::Scene;
+}
+
+// Run command through the appropriate child nodes
+void SceneNode::onCommand(const Command& command, sf::Time dt)
+{
+	if (command.category & getCategory())
+	{
+		command.action(*this, dt);
+	}
+
+	for (Ptr& child : mChildren)
+	{
+		child->onCommand(command, dt);
+	}
 }
 
 /* Private Methods */
@@ -80,10 +101,7 @@ void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 }
 
-void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	// Why do we need to draw nothing?
-}
+void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {}
 
 void SceneNode::updateCurrent(sf::Time dt)
 {
