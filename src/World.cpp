@@ -43,7 +43,20 @@ void World::update(sf::Time dt)
 		mPlayerAircraft->setVelocity(velocity);
 	}
 
+	// Handle commands for this tick2
+	while (!mCommandQueue.isEmpty())
+	{
+		mSceneGraph.onCommand(mCommandQueue.pop(), dt);
+	}
+
+	
 	mSceneGraph.update(dt);
+}
+
+// Provide access to the command queue to outside entities
+CommandQueue& World::getCommandQueue()
+{
+	return mCommandQueue;
 }
 
 void World::loadTextures()

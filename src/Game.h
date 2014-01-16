@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "World.h"
+#include "Player.h"
 #include "Glob.h"
 
 class Game
@@ -22,7 +23,7 @@ private:
 	void update(sf::Time);
 	void render();
 	void handlePlayerInput(sf::Keyboard::Key, bool);
-
+	void processInput();
 private:
 	static const sf::Time TimePerFrame;
 
@@ -35,7 +36,7 @@ private:
 	std::size_t mDebugFps;
 
 	void updateDebugText(sf::Time);
-
+	Player mPlayer;
 };
 
 #endif

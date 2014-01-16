@@ -13,6 +13,7 @@
 #include "SpriteNode.h"
 #include "ResourceIdentifiers.h"
 #include "Aircraft.h"
+#include "CommandQueue.h"
 
 class World
 {
@@ -20,6 +21,8 @@ public:
 	explicit World(sf::RenderWindow& window);
 	void update(sf::Time dt);
 	void draw();
+
+	CommandQueue& getCommandQueue();
 
 private:
 	enum Layer
@@ -46,6 +49,7 @@ private:
 	
 	Aircraft* mPlayerAircraft;
 
+	CommandQueue mCommandQueue;
 };
 
 #endif

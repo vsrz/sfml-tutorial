@@ -70,6 +70,22 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
 }
 
+void Game::processInput()
+{
+	CommandQueue& commands = mWorld.getCommandQueue();
+
+	sf::Event event;
+	while(mWindow.pollEvent(event))
+	{
+		mPlayer.handleEvent(event, commands);
+
+		if(event.type == sf::Event::Closed)
+			mWindow.close();
+	}
+
+	mPlayer.handleRealtimeInput(commands);
+}
+
 void Game::update(sf::Time elapsedTime)
 {
 	mWorld.update(elapsedTime);
