@@ -7,7 +7,7 @@ World::World(sf::RenderWindow& window)
 	, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 5000.f)
 	, mSpawnPosition(
 		mWorldView.getSize().x / 2.f, 
-		mWorldBounds.height - mWorldView.getSize().y
+		mWorldBounds.height - mWorldView.getSize().y /2.f
 		)
 	, mScrollSpeed(-50.f)
 	, mPlayerAircraft(nullptr)
@@ -32,25 +32,17 @@ void World::update(sf::Time dt)
 	// Move the background texture
 	mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());
 	
-	sf::Vector2f position = mPlayerAircraft->getPosition();
-	sf::Vector2f velocity = mPlayerAircraft->getVelocity();
+	mPlayerAircraft->setVelocity(0.f, 0.f);
 
-	// Bounce the planes in the other direction of they have reached the edge of the screen
-	if(position.x <= mWorldBounds.left + 150 
-		|| position.x >= mWorldBounds.left + mWorldBounds.width - 150)
-	{
-		velocity.x = -velocity.x;
-		mPlayerAircraft->setVelocity(velocity);
-	}
-
-	// Handle commands for this tick2
+	// Handle commands for this tick
 	while (!mCommandQueue.isEmpty())
 	{
 		mSceneGraph.onCommand(mCommandQueue.pop(), dt);
 	}
-
-	
+	adaptPlayerVelocity();
 	mSceneGraph.update(dt);
+	adaptPlayerPosition();
+	std::cout << mPlayerAircraft->getPosition().x << " " << mPlayerAircraft->getPosition().y << std::endl;
 }
 
 // Provide access to the command queue to outside entities
@@ -112,4 +104,31 @@ void World::buildScene()
 
 
 
+}
+
+void World::adaptPlayerVelocity()
+{
+	sf::Vector2f velocity = mPlayerAircraft->getVelocity();
+
+	// If the player is moving diagonally, adapt it so it's consistent
+	if (velocity.x != 0.f && velocity.y != 0.f)
+		mPlayerAircraft->setVelocity(velocity / std::sqrt(2.f));
+
+	// Scrolling velocity
+	mPlayerAircraft->accelerate(0.f, mScrollSpeed);
+}
+
+void World::adaptPlayerPosition()
+{
+	// Make sure the player stays within the bounds of the screen
+	sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+	const float borderDistance = 40.f;
+
+	sf::Vector2f position = mPlayerAircraft->getPosition();
+	position.x = std::max(position.x, viewBounds.left + borderDistance);
+	position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
+	position.y = std::max(position.y, viewBounds.top + borderDistance);
+	position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
+	
+	mPlayerAircraft->setPosition(position);
 }

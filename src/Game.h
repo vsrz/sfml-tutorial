@@ -22,7 +22,6 @@ private:
 	void processEvents();
 	void update(sf::Time);
 	void render();
-	void handlePlayerInput(sf::Keyboard::Key, bool);
 	void processInput();
 private:
 	static const sf::Time TimePerFrame;

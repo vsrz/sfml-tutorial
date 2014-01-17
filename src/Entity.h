@@ -15,6 +15,8 @@ public:
 	void setVelocity(sf::Vector2f velocity);
 	void setVelocity(float vx, float vy);
 	sf::Vector2f getVelocity() const;
+	void accelerate(float, float);
+	void accelerate(sf::Vector2f);
 
 private:
 	virtual void updateCurrent(sf::Time dt);

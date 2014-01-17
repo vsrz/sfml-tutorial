@@ -26,4 +26,14 @@ void Entity::updateCurrent(sf::Time dt)
 
 }
 
+void Entity::accelerate(sf::Vector2f velocity)
+{
+	mVelocity += velocity;
+}
+
+void Entity::accelerate(float vx, float vy)
+{
+ 	mVelocity.x += vx;
+	mVelocity.y += vy;
+}
 

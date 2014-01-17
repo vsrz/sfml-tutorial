@@ -50,6 +50,10 @@ private:
 	Aircraft* mPlayerAircraft;
 
 	CommandQueue mCommandQueue;
+
+	void adaptPlayerPosition();
+	void adaptPlayerVelocity();
+
 };
 
 #endif

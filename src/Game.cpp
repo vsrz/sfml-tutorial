@@ -10,6 +10,8 @@ Game::Game(void)
 	, mDebugFps(0)
 	, mDebugTime()
 {
+	mWindow.setKeyRepeatEnabled(false);
+
 	mFont.loadFromFile("res/Sansation.ttf");
 	mDebugText.setFont(mFont);
 	mDebugText.setPosition(5.f, 5.f);
@@ -35,7 +37,7 @@ void Game::run(void)
 		while (timeSinceLastUpdate > TimePerFrame)
 		{
 			timeSinceLastUpdate -= TimePerFrame;
-			processEvents();
+			processInput();
 			update(TimePerFrame);
 		}
 		updateDebugText(elapsedTime);
@@ -43,48 +45,22 @@ void Game::run(void)
 	}
 }
 
-void Game::processEvents(void)
+void Game::processInput()
 {
+	CommandQueue& commands = mWorld.getCommandQueue();
 	sf::Event event;
+
 	while (mWindow.pollEvent(event))
 	{
-		switch (event.type)
-		{
-		case sf::Event::KeyPressed:
-			handlePlayerInput(event.key.code, true);
-			break;
-		case sf::Event::KeyReleased:
-			handlePlayerInput(event.key.code, false);
-			break;
-		case sf::Event::Closed:
-			mWindow.close();
-		}
+		mPlayer.handleEvent(event, commands);
+
 		if (event.type == sf::Event::Closed)
 		{
 			mWindow.close();
 		}
 	}
-}
-
-void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
-{
-}
-
-void Game::processInput()
-{
-	CommandQueue& commands = mWorld.getCommandQueue();
-
-	sf::Event event;
-	while(mWindow.pollEvent(event))
-	{
-		mPlayer.handleEvent(event, commands);
-
-		if(event.type == sf::Event::Closed)
-			mWindow.close();
-	}
-
 	mPlayer.handleRealtimeInput(commands);
-}
+}	
 
 void Game::update(sf::Time elapsedTime)
 {
