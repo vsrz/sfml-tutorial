@@ -42,7 +42,6 @@ void World::update(sf::Time dt)
 	adaptPlayerVelocity();
 	mSceneGraph.update(dt);
 	adaptPlayerPosition();
-	std::cout << mPlayerAircraft->getPosition().x << " " << mPlayerAircraft->getPosition().y << std::endl;
 }
 
 // Provide access to the command queue to outside entities
