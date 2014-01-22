@@ -12,15 +12,30 @@ State::Context::Context(sf::RenderWindow& window, TextureHolder& textures, FontH
 
 }
 
-State::State(StateStack& Stack, Context context)
+State::State(StateStack& stack, Context context)
+	: mStack(&stack)
+	, mContext(context)
 {
 
 }
 
-~State::State()
+State::~State()
 {
 
 }
 
+void State::requestStackPush(States::ID stateID)
+{
+	mStack->pushState(stateID);
+}
 
+void State::requestStackPop()
+{
+	mStack->popState();
+}
+
+State::Context State::getContext() const
+{
+	return mContext;
+}
 
