@@ -1,20 +1,23 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 #pragma once
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+
 #include "World.h"
 #include "Player.h"
 #include "Glob.h"
+#include "StateStack.h"
 
-class Game
+class Application
 	: private sf::NonCopyable
 {
 public:
-	Game(void);	
-	~Game(void);
+	Application(void);	
+	~Application(void);
 
 	void run();
 
@@ -23,19 +26,23 @@ private:
 	void update(sf::Time);
 	void render();
 	void processInput();
-private:
+	void updateDebugText(sf::Time);
+
+	void registerStates();
+
 	static const sf::Time TimePerFrame;
 
 	sf::RenderWindow mWindow;	
-	World mWorld;
 
-	sf::Text mDebugText;
-	sf::Font mFont;
+	TextureHolder mTextures;
+	FontHolder mFonts;
 	sf::Time mDebugTime;
 	std::size_t mDebugFps;
+	sf::Text mDebugText;
 
-	void updateDebugText(sf::Time);
 	Player mPlayer;
+	StateStack mStateStack;
+
 };
 
 #endif

@@ -39,3 +39,8 @@ State::Context State::getContext() const
 	return mContext;
 }
 
+void State::requestStateClear()
+{
+	mStack->clearStates();
+}
+

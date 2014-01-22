@@ -1,14 +1,14 @@
 
 #include <SFML/Graphics.hpp>
-#include "Game.h"
+#include "Application.h"
 #include "Tests.h"
 
 int main()
 {
     try
 	{
-		Game game;
-		game.run();
+		Application app;
+		app.run();
 	}
 	catch (std::exception& e)
 	{

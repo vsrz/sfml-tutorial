@@ -62,8 +62,8 @@
       <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>mkdir /Y res
-mkdir /Y lib
+      <Command>mkdir res
+mkdir lib
 xcopy /E /Y /I "$(SolutionDir)..\..\..\..\src\SFML-2.1\lib" "$(OutDir)\lib"
 xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
 </Command>
@@ -95,27 +95,34 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClCompile Include="..\..\..\..\src\Command.cpp" />
     <ClCompile Include="..\..\..\..\src\CommandQueue.cpp" />
     <ClCompile Include="..\..\..\..\src\Entity.cpp" />
-    <ClCompile Include="..\..\..\..\src\Game.cpp" />
+    <ClCompile Include="..\..\..\..\src\Application.cpp" />
+    <ClCompile Include="..\..\..\..\src\GameState.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
     <ClInclude Include="..\..\..\..\src\Category.h" />
     <ClInclude Include="..\..\..\..\src\Command.h" />
     <ClInclude Include="..\..\..\..\src\CommandQueue.h" />
+    <ClInclude Include="..\..\..\..\src\GameState.h" />
+    <ClInclude Include="..\..\..\..\src\MenuState.h" />
+    <ClInclude Include="..\..\..\..\src\PauseState.h" />
     <ClInclude Include="..\..\..\..\src\Player.h" />
     <ClInclude Include="..\..\..\..\src\ResourceHolder.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClCompile Include="..\..\..\..\src\MenuState.cpp" />
+    <ClCompile Include="..\..\..\..\src\PauseState.cpp" />
     <ClCompile Include="..\..\..\..\src\Player.cpp" />
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
     <ClCompile Include="..\..\..\..\src\SpriteNode.cpp" />
     <ClCompile Include="..\..\..\..\src\State.cpp" />
     <ClCompile Include="..\..\..\..\src\StateStack.cpp" />
     <ClCompile Include="..\..\..\..\src\Tests.cpp" />
+    <ClCompile Include="..\..\..\..\src\TitleState.cpp" />
     <ClCompile Include="..\..\..\..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\Aircraft.h" />
     <ClInclude Include="..\..\..\..\src\Entity.h" />
-    <ClInclude Include="..\..\..\..\src\Game.h" />
+    <ClInclude Include="..\..\..\..\src\Application.h" />
     <ClInclude Include="..\..\..\..\src\Glob.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -208,6 +215,7 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\StateIdentifiers.h" />
     <ClInclude Include="..\..\..\..\src\StateStack.h" />
     <ClInclude Include="..\..\..\..\src\Tests.h" />
+    <ClInclude Include="..\..\..\..\src\TitleState.h" />
     <ClInclude Include="..\..\..\..\src\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +230,10 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <Image Include="..\..\..\..\res\Desert.png" />
     <Image Include="..\..\..\..\res\Eagle.png" />
     <Image Include="..\..\..\..\res\Raptor.png" />
+    <Image Include="..\..\..\..\res\TitleScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\res\Sansation.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

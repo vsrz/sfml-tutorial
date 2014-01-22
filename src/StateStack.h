@@ -26,8 +26,10 @@ public:
 	};
 
 	explicit StateStack(State::Context context);
+	
 	template <typename T>
 	void registerState(States::ID stateID);
+	
 	void update(sf::Time dt);
 	void draw();
 	void handleEvent(const sf::Event& event);
@@ -64,7 +66,7 @@ void StateStack::registerState(States::ID stateID)
 	mFactories[stateID] = [this] ()
 	{
 		return State::Ptr(new T(*this, mContext));
-	}
+	};
 }
 
 
