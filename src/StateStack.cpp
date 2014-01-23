@@ -14,8 +14,9 @@ StateStack::StateStack(State::Context context)
 
 void StateStack::update(sf::Time dt)
 {
-	// Iterate from top to bottom stop as soon as update() returns false
-	for (auto itr = mStack.begin(); itr != mStack.end(); ++itr)
+	// Iterate from top to bottom (rbegin/rend fns)
+	// stop as soon as update() returns false
+	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		if (!(*itr)->update(dt))
 		{
@@ -38,7 +39,7 @@ void StateStack::draw()
 void StateStack::handleEvent(const sf::Event& event)
 {
 	// Iterate from top to bottom, stop as soon as handleEvent() returns false
-	for (auto itr = mStack.begin(); itr != mStack.end(); ++itr)
+	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		if (!(*itr)->handleEvent(event))
 			break;

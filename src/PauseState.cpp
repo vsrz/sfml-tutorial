@@ -50,7 +50,7 @@ bool PauseState::handleEvent(const sf::Event& event)
 		return false;
 	}
 
-	if (event.key.code != sf::Keyboard::Escape)
+	if (event.key.code == sf::Keyboard::Escape)
 	{
 		requestStackPop();
 	}
