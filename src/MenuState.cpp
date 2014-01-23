@@ -95,7 +95,7 @@ bool MenuState::handleEvent(const sf::Event& event)
 		}
 		else
 		{
-			mOptionIndex = mOptions.size();
+			mOptionIndex = mOptions.size() - 1;
 		}
 		updateOptionText();
 	}

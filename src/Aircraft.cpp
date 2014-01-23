@@ -20,9 +20,14 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures)
 	: mType(type)
 	, mSprite(textures.get(toTextureID(type)))
 {
+	if (type == Textures::Eagle)
+	{
+		mSprite.setScale(0.2f, 0.2f);
+	}
 	// Align the origin for this object
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+
 }
 
 void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const

@@ -19,6 +19,8 @@ private:
 	World mWorld;
 	Player& mPlayer;
 
+	bool mDebugOverlay;
+
 };
 
 #endif

@@ -5,6 +5,7 @@ GameState::GameState(StateStack& stack, Context context)
 	: State(stack, context)
 	, mWorld(*context.window)
 	, mPlayer(*context.player)
+	, mDebugOverlay(false)
 {
 }
 
@@ -33,6 +34,21 @@ bool GameState::handleEvent(const sf::Event& event)
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
 	{
 		requestStackPush(States::Pause);
+	}
+
+	// F3 is pressed, so bring up the debug screen
+	else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F3)
+	{
+		if (mDebugOverlay == false)
+		{
+			requestStackPush(States::Debug);
+			mDebugOverlay = true;
+		}
+		else
+		{
+			requestStackPop();
+			mDebugOverlay = false;
+		}
 	}
 
 	return true;

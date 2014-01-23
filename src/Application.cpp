@@ -3,6 +3,7 @@
 #include "MenuState.h"
 #include "GameState.h"
 #include "PauseState.h"
+#include "DebugScreenState.h"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
@@ -12,18 +13,10 @@ Application::Application(void)
 	, mPlayer()
 	, mTextures()
 	, mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer))
-	, mDebugText()
-	, mDebugFps(0)
-	, mDebugTime()
 {
 	mWindow.setKeyRepeatEnabled(false);
 	mFonts.load(Fonts::Default, "res/Sansation.ttf");
 	mTextures.load(Textures::TitleScreen, "res/TitleScreen.png");
-
-	mDebugText.setFont(mFonts.get(Fonts::Default));
-	mDebugText.setPosition(5.f, 5.f);
-	mDebugText.setCharacterSize(10u);
-	mDebugText.setString("0 fps\n0 tps");
 
 	registerStates();
 	mStateStack.pushState(States::Title);
@@ -55,7 +48,6 @@ void Application::run(void)
 				mWindow.close();
 			}
 		}
-		updateDebugText(elapsedTime);
 		render();
 	}
 }
@@ -86,30 +78,15 @@ void Application::render(void)
 	mStateStack.draw();
 
 	mWindow.setView(mWindow.getDefaultView());
-	mWindow.draw(mDebugText);
 	mWindow.display();
-}
-
-void Application::updateDebugText(sf::Time dt)
-{
-	mDebugTime += dt;
-	mDebugFps += 1;
-	if (mDebugTime >= sf::seconds(1.0f))
-	{
-		mDebugText.setString(
-				toString(mDebugFps) + " fps\n" +
-				toString(mDebugTime.asMicroseconds() / mDebugFps) + " tps");
-                                                         
-		mDebugTime -= sf::seconds(1.0f);
-		mDebugFps = 0;
-	}
 }
 
 void Application::registerStates()
 {
 	mStateStack.registerState<TitleState>(States::Title);
 	mStateStack.registerState<MenuState>(States::Menu);
-	mStateStack.registerState<GameState>(States::Menu);
+	mStateStack.registerState<GameState>(States::Game);
 	mStateStack.registerState<PauseState>(States::Pause);
+	mStateStack.registerState<DebugScreenState>(States::Debug);
 }
 

@@ -13,6 +13,7 @@ namespace States
 		Game,
 		Loading,
 		Pause,
+		Debug,
 	};
 }
 

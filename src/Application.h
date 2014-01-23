@@ -26,7 +26,6 @@ private:
 	void update(sf::Time);
 	void render();
 	void processInput();
-	void updateDebugText(sf::Time);
 
 	void registerStates();
 
@@ -36,9 +35,6 @@ private:
 
 	TextureHolder mTextures;
 	FontHolder mFonts;
-	sf::Time mDebugTime;
-	std::size_t mDebugFps;
-	sf::Text mDebugText;
 
 	Player mPlayer;
 	StateStack mStateStack;
