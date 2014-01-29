@@ -28,14 +28,13 @@ private:
 	void processInput();
 
 	void registerStates();
-
+	
 	static const sf::Time TimePerFrame;
 
 	sf::RenderWindow mWindow;	
 
 	TextureHolder mTextures;
 	FontHolder mFonts;
-
 	Player mPlayer;
 	StateStack mStateStack;
 
