@@ -26,7 +26,7 @@ void ParallelTask::execute()
 float ParallelTask::getCompletion()
 {
 	sf::Lock lock(mMutex);
-	return mElapsedTime.getElapsedTime().asSeconds() / 10.f;
+	return mElapsedTime.getElapsedTime().asSeconds() / 5.f;
 }
 
 void ParallelTask::runTask()

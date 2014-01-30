@@ -13,13 +13,14 @@ LoadingState::LoadingState(StateStack& stack, Context context)
 	mLoadingText.setFont(font);
 	mLoadingText.setString("Loading Resources");
 	centerOrigin(mLoadingText);
-	mLoadingText.setPosition(window.getSize().x / 2u,
+	mLoadingText.setPosition(window.getSize().x * 0.5,
 		window.getSize().y / 2u + 50);
 
 	// Initialize the progress bar background
 	mProgressBarBackground.setFillColor(sf::Color::White);
-	mProgressBarBackground.setSize(sf::Vector2f(window.getSize().x - 20, 10));
-	mProgressBarBackground.setPosition(10, mLoadingText.getPosition().y + 40);
+	mProgressBarBackground.setSize(sf::Vector2f(window.getSize().x * 0.4f, 10));
+	mProgressBarBackground.setPosition(sf::Vector2f(window.getSize().x * 0.5f - mProgressBarBackground.getSize().x * 0.5f
+		, mLoadingText.getPosition().y + 40));
 
 	// Initialize the progress bar itself
 	mProgressBar.setFillColor(sf::Color::Green);
@@ -54,8 +55,8 @@ void LoadingState::draw()
 	window.setView(window.getDefaultView());
 
 	window.draw(mLoadingText);
-	window.draw(mProgressBar);
 	window.draw(mProgressBarBackground);
+	window.draw(mProgressBar);
 
 }
 
