@@ -90,6 +90,9 @@
     <ClCompile Include="..\..\..\..\src\LoadingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\ParallelTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\SFML-2.1\include\SFML\Audio.hpp">
@@ -405,6 +408,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\LoadingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\ParallelTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

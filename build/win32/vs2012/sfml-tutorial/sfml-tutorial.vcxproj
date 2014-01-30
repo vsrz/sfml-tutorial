@@ -107,12 +107,14 @@ xcopy /E /Y /I "$(SolutionDir)..\..\..\..\res" "$(OutDir)\res"
     <ClInclude Include="..\..\..\..\src\GameState.h" />
     <ClInclude Include="..\..\..\..\src\LoadingState.h" />
     <ClInclude Include="..\..\..\..\src\MenuState.h" />
+    <ClInclude Include="..\..\..\..\src\ParallelTask.h" />
     <ClInclude Include="..\..\..\..\src\PauseState.h" />
     <ClInclude Include="..\..\..\..\src\Player.h" />
     <ClInclude Include="..\..\..\..\src\ResourceHolder.inl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClCompile Include="..\..\..\..\src\MenuState.cpp" />
+    <ClCompile Include="..\..\..\..\src\ParallelTask.cpp" />
     <ClCompile Include="..\..\..\..\src\PauseState.cpp" />
     <ClCompile Include="..\..\..\..\src\Player.cpp" />
     <ClCompile Include="..\..\..\..\src\SceneNode.cpp" />
