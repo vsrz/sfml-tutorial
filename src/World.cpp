@@ -7,9 +7,9 @@ World::World(sf::RenderWindow& window)
 	, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 5000.f)
 	, mSpawnPosition(
 		mWorldView.getSize().x / 2.f, 
-		mWorldBounds.height - mWorldView.getSize().y /2.f
+		mWorldBounds.height - mWorldView.getSize().y -100
 		)
-	, mScrollSpeed(-50.f)
+	, mScrollSpeed(0.f)
 	, mPlayerAircraft(nullptr)
 	, mSceneLayers()
 	, mSceneGraph()
