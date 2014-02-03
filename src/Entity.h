@@ -18,9 +18,15 @@ public:
 	void accelerate(float, float);
 	void accelerate(sf::Vector2f);
 
+	void setDestination(sf::Vector2i destination);
 private:
+
+	void findDestination();
+	bool hasReachedDestination();
 	virtual void updateCurrent(sf::Time dt);
 	sf::Vector2f mVelocity;
+	sf::Vector2i mDestination;
+
 
 };
 

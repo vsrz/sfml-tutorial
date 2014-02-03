@@ -14,12 +14,11 @@ struct AircraftMover
 		aircraft.accelerate(velocity);
 	}
 
+
 	sf::Vector2f velocity;
 };
 
-Player::Player(sf::RenderWindow& window) 
-	: mPlayerDestination()
-	, mWindow(window)
+Player::Player() 
 {
 	mKeyBinding[sf::Keyboard::Left] = MoveLeft;
 	mKeyBinding[sf::Keyboard::Right] = MoveRight;
@@ -44,6 +43,7 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
 	}
 
 	// LMB is pressed, set the destination coordinates
+	/*
 	else if (event.type == sf::Event::MouseButtonPressed &&
 		sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -57,6 +57,7 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
 			<< std::endl;
 
 	}
+	*/
 }
 
 void Player::initializeActions()
@@ -64,9 +65,10 @@ void Player::initializeActions()
 	const float playerSpeed = 250.f;
 
 	mActionBinding[MoveLeft].action = derivedAction<Aircraft>(AircraftMover(-playerSpeed, 0.f));
-	mActionBinding[MoveRight].action = derivedAction<Aircraft>(AircraftMover(+playerSpeed, 0.));
+	mActionBinding[MoveRight].action = derivedAction<Aircraft>(AircraftMover(+playerSpeed, 0.f));
 	mActionBinding[MoveUp].action = derivedAction<Aircraft>(AircraftMover(0.f, -playerSpeed));
 	mActionBinding[MoveDown].action = derivedAction<Aircraft>(AircraftMover(0.f, +playerSpeed));
+	//mActionBinding[MoveToLocation].action = derivedAction<Aircraft>(
 }
 
 void Player::handleRealtimeInput(CommandQueue& commands)
