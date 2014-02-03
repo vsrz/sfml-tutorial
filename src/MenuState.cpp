@@ -39,7 +39,7 @@ void MenuState::draw()
 	window.setView(window.getDefaultView());
 	
 	// Draw the background then all the option elements to the renderwindow
-	window.draw(mBackgroundSprite);
+	//window.draw(mBackgroundSprite);
 
 	for (const sf::Text& text : mOptions)
 	{

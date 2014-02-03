@@ -21,8 +21,15 @@ private:
 	std::size_t mDebugFps;
 	sf::Text mFps;
 	sf::Text mTps;
+	
+	sf::Time mMouseTime;
+	sf::Text mMouseLabel;
+	sf::Text mMousePos;
 
 	void updateDebugText(sf::Time dt);
+	void updateMouseLocation(sf::Time dt);
+
+	void initalizeText(sf::Text& text, sf::Vector2f position, sf::String string);
 };
 
 #endif
