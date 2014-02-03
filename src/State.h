@@ -29,7 +29,7 @@ public:
 		sf::RenderWindow* window;
 		TextureHolder* textures;
 		FontHolder* fonts;
-		Player* player;
+		Player* player(&window);
 	};
 
 	State(StateStack& Stack, Context context);

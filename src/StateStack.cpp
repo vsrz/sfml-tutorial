@@ -8,7 +8,6 @@ StateStack::StateStack(State::Context context)
 	, mPendingList()
 	, mContext(context)
 	, mFactories()
-  
 {
 }
 

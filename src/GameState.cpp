@@ -1,4 +1,5 @@
 #include "GameState.h"
+#include <iostream>
 
 
 GameState::GameState(StateStack& stack, Context context)
@@ -7,6 +8,7 @@ GameState::GameState(StateStack& stack, Context context)
 	, mPlayer(*context.player)
 	, mDebugOverlay(false)
 {
+
 }
 
 void GameState::draw()
@@ -31,13 +33,15 @@ bool GameState::handleEvent(const sf::Event& event)
 	mPlayer.handleEvent(event, commands);
 
 	// Escape pressed, trigger the pause screen
-	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+	if (event.type == sf::Event::KeyPressed && 
+		event.key.code == sf::Keyboard::Escape)
 	{
 		requestStackPush(States::Pause);
 	}
 
-	// F3 is pressed, so bring up the debug screen
-	else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F3)
+	// F3 is pressed, so bring up the debug overlay
+	else if (event.type == sf::Event::KeyPressed && 
+		event.key.code == sf::Keyboard::F3)
 	{
 		if (mDebugOverlay == false)
 		{
@@ -50,6 +54,8 @@ bool GameState::handleEvent(const sf::Event& event)
 			mDebugOverlay = false;
 		}
 	}
+
+		
 
 	return true;
 }
